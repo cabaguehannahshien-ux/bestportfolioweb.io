@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah Shien Cabague - Developer & Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        * {
+            font-family: 'Exo 2', sans-serif;
+            letter-spacing: 0.5px;
+        }
+        
+        .chrome-font {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706, #92400e, #fbbf24);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5), 0 0 20px rgba(251, 191, 36, 0.3);
+            letter-spacing: 1px;
+            animation: shimmer 3s ease-in-out infinite;
+            position: relative;
+        }
+        
+        .chrome-font::after {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -20px;
+            font-size: 0.8em;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .pixel-font {
+            font-family: 'Press Start 2P', cursive;
+            image-rendering: pixelated;
+            text-rendering: optimizeSpeed;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .nav-text {
+            font-family: 'Orbitron', monospace;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #e8d5ff 0%, #f3e8ff 25%, #ddd6fe 50%, #c4b5fd 75%, #a78bfa 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(139,92,246,0.2);
+            position: relative;
+        }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            animation: sparkle 4s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .typing-animation {
+            border-right: 2px solid #667eea;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #667eea; }
+        }
+        
+        .skill-bar {
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.6); }
+        }
+        
+        /* Enchanted Fairy Loader Styles */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 25%, #3730a3 50%, #4338ca 75%, #4f46e5 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .loader-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fbbf24' fill-opacity='0.3'%3E%3Ccircle cx='20' cy='20' r='2'%3E%3Canimate attributeName='opacity' values='0;1;0' dur='2s' repeatCount='indefinite'/%3E%3C/circle%3E%3Ccircle cx='80' cy='30' r='1.5'%3E%3Canimate attributeName='opacity' values='0;1;0' dur='1.5s' repeatCount='indefinite' begin='0.5s'/%3E%3C/circle%3E%3Ccircle cx='40' cy='70' r='2.5'%3E%3Canimate attributeName='opacity' values='0;1;0' dur='2.5s' repeatCount='indefinite' begin='1s'/%3E%3C/circle%3E%3Ccircle cx='70' cy='80' r='1'%3E%3Canimate attributeName='opacity' values='0;1;0' dur='1.8s' repeatCount='indefinite' begin='0.3s'/%3E%3C/circle%3E%3C/g%3E%3C/svg%3E") repeat;
+            animation: fairy-dust 6s linear infinite;
+        }
+        
+        .loader-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .fairy-loader {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .fairy-wing {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.8), rgba(245, 158, 11, 0.6));
+            border-radius: 50% 10% 50% 10%;
+            animation: flutter 1.5s ease-in-out infinite;
+        }
+        
+        .fairy-wing:nth-child(1) {
+            top: 30px;
+            left: 20px;
+            transform-origin: bottom right;
+            animation-delay: 0s;
+        }
+        
+        .fairy-wing:nth-child(2) {
+            top: 30px;
+            right: 20px;
+            transform-origin: bottom left;
+            animation-delay: 0.2s;
+            transform: scaleX(-1);
+        }
+        
+        .fairy-wing:nth-child(3) {
+            top: 50px;
+            left: 25px;
+            width: 50px;
+            height: 35px;
+            transform-origin: top right;
+            animation-delay: 0.1s;
+        }
+        
+        .fairy-wing:nth-child(4) {
+            top: 50px;
+            right: 25px;
+            width: 50px;
+            height: 35px;
+            transform-origin: top left;
+            animation-delay: 0.3s;
+            transform: scaleX(-1);
+        }
+        
+        .fairy-body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 60px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 50px;
+            animation: fairy-glow 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+        }
+        
+        .fairy-head {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #fde68a, #fbbf24);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+        
+        .magic-sparkles {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fbbf24;
+            border-radius: 50%;
+            animation: sparkle-float 3s ease-in-out infinite;
+        }
+        
+        .magic-sparkles:nth-child(6) {
+            top: 20px;
+            left: 70px;
+            animation-delay: 0s;
+        }
+        
+        .magic-sparkles:nth-child(7) {
+            top: 80px;
+            left: 20px;
+            animation-delay: 0.8s;
+        }
+        
+        .magic-sparkles:nth-child(8) {
+            top: 120px;
+            left: 80px;
+            animation-delay: 1.2s;
+        }
+        
+        .magic-sparkles:nth-child(9) {
+            top: 40px;
+            left: 120px;
+            animation-delay: 0.4s;
+        }
+        
+        .magic-sparkles:nth-child(10) {
+            top: 100px;
+            left: 50px;
+            animation-delay: 1.6s;
+        }
+        
+        @keyframes flutter {
+            0%, 100% { 
+                transform: rotateY(0deg) rotateX(0deg);
+                opacity: 0.8;
+            }
+            25% { 
+                transform: rotateY(-15deg) rotateX(5deg);
+                opacity: 1;
+            }
+            75% { 
+                transform: rotateY(15deg) rotateX(-5deg);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fairy-dust {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+        
+        @keyframes sparkle-float {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-15px) scale(1.3);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-25px) scale(0.8);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(-10px) scale(1.1);
+                opacity: 0.9;
+            }
+        }
+        
+        @keyframes fairy-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(251, 191, 36, 0.9), 0 0 40px rgba(245, 158, 11, 0.5);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+        
+        .loader-text {
+            margin-top: 40px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706, #fbbf24);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: magical-text 3s ease-in-out infinite;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .loader-text::before {
+            content: '🧚‍♀️';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: fairy-dance 2s ease-in-out infinite;
+        }
+        
+        .loader-text::after {
+            content: '🧚‍♀️';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%) scaleX(-1);
+            animation: fairy-dance 2s ease-in-out infinite reverse;
+        }
+        
+        .loader-progress {
+            margin-top: 20px;
+            width: 250px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+        }
+        
+        .loader-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706, #fbbf24);
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: magical-progress 3s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+        }
+        
+        @keyframes magical-text {
+            0%, 100% { 
+                background-position: 0% 50%;
+                text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+            }
+            50% { 
+                background-position: 100% 50%;
+                text-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(245, 158, 11, 0.5);
+            }
+        }
+        
+        @keyframes fairy-dance {
+            0%, 100% { 
+                transform: translateY(-50%) translateX(0px);
+            }
+            25% {
+                transform: translateY(-60%) translateX(5px);
+            }
+            75% {
+                transform: translateY(-40%) translateX(-5px);
+            }
+        }
+        
+        @keyframes magical-progress {
+            0% { 
+                width: 0%;
+                background-position: 0% 50%;
+            }
+            50% {
+                width: 100%;
+                background-position: 100% 50%;
+            }
+            100% {
+                width: 100%;
+                background-position: 200% 50%;
+            }
+        }
+        
+        /* Living Fantasy Home Page Animations */
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+        
+        /* Magical Highlighting Effects */
+        .highlight-glow {
+            position: relative;
+            animation: highlight-pulse 3s ease-in-out infinite;
+        }
+        
+        .highlight-glow::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #92400e, #fbbf24);
+            background-size: 400% 400%;
+            border-radius: inherit;
+            z-index: -1;
+            animation: highlight-gradient 4s ease infinite;
+            opacity: 0.7;
+            filter: blur(8px);
+        }
+        
+        .highlight-border {
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #fbbf24) border-box;
+            animation: highlight-border-flow 3s linear infinite;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #92400e, #fbbf24);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: highlight-text-flow 3s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+        
+        .highlight-shadow {
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.6),
+                        0 0 60px rgba(245, 158, 11, 0.4),
+                        0 0 90px rgba(217, 119, 6, 0.2);
+            animation: highlight-shadow-pulse 2s ease-in-out infinite;
+        }
+        
+        .highlight-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            animation: highlight-sweep 4s linear infinite;
+            z-index: 1;
+        }
+        
+        .highlight-card > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: highlight-slide 2s ease-in-out infinite;
+        }
+        
+        .highlight-nav {
+            position: relative;
+        }
+        
+        .highlight-nav::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706, #fbbf24);
+            background-size: 200% 100%;
+            animation: highlight-underline 3s linear infinite;
+            opacity: 0.8;
+        }
+        
+        @keyframes highlight-pulse {
+            0%, 100% { 
+                filter: brightness(1) saturate(1);
+                transform: scale(1);
+            }
+            50% { 
+                filter: brightness(1.2) saturate(1.3);
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes highlight-gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes highlight-border-flow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes highlight-text-flow {
+            0%, 100% { 
+                background-position: 0% 50%;
+                text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+            }
+            50% { 
+                background-position: 100% 50%;
+                text-shadow: 0 0 30px rgba(251, 191, 36, 0.8), 0 0 40px rgba(245, 158, 11, 0.6);
+            }
+        }
+        
+        @keyframes highlight-shadow-pulse {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(251, 191, 36, 0.6),
+                           0 0 60px rgba(245, 158, 11, 0.4),
+                           0 0 90px rgba(217, 119, 6, 0.2);
+            }
+            50% { 
+                box-shadow: 0 0 50px rgba(251, 191, 36, 0.8),
+                           0 0 100px rgba(245, 158, 11, 0.6),
+                           0 0 150px rgba(217, 119, 6, 0.4);
+            }
+        }
+        
+        @keyframes highlight-sweep {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        @keyframes highlight-slide {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes highlight-underline {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Sparkle Overlay Effect */
+        .sparkle-overlay {
+            position: relative;
+        }
+        
+        .sparkle-overlay::before {
+            content: '✨';
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 1.2em;
+            animation: sparkle-dance 3s ease-in-out infinite;
+            z-index: 10;
+        }
+        
+        .sparkle-overlay::after {
+            content: '⭐';
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            font-size: 1em;
+            animation: sparkle-dance 3s ease-in-out infinite reverse;
+            z-index: 10;
+        }
+        
+        @keyframes sparkle-dance {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateY(-10px) rotate(90deg) scale(1.2);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-5px) rotate(180deg) scale(0.8);
+                opacity: 0.9;
+            }
+            75% {
+                transform: translateY(-15px) rotate(270deg) scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 50px;
+            opacity: 0.6;
+        }
+        
+        .cloud-1 {
+            width: 100px;
+            height: 40px;
+            top: 20%;
+            left: -100px;
+            animation: float-cloud 25s linear infinite;
+        }
+        
+        .cloud-2 {
+            width: 80px;
+            height: 30px;
+            top: 15%;
+            left: -80px;
+            animation: float-cloud 30s linear infinite;
+            animation-delay: -10s;
+        }
+        
+        .cloud-3 {
+            width: 120px;
+            height: 50px;
+            top: 25%;
+            left: -120px;
+            animation: float-cloud 35s linear infinite;
+            animation-delay: -20s;
+        }
+        
+        .cloud-4 {
+            width: 90px;
+            height: 35px;
+            top: 30%;
+            left: -90px;
+            animation: float-cloud 28s linear infinite;
+            animation-delay: -5s;
+        }
+        
+        @keyframes float-cloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+        
+        /* Stars */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fbbf24;
+            border-radius: 50%;
+            animation: twinkle-star 3s ease-in-out infinite;
+        }
+        
+        .star-1 { top: 10%; left: 20%; animation-delay: 0s; }
+        .star-2 { top: 15%; left: 80%; animation-delay: 0.5s; }
+        .star-3 { top: 25%; left: 60%; animation-delay: 1s; }
+        .star-4 { top: 35%; left: 30%; animation-delay: 1.5s; }
+        .star-5 { top: 45%; left: 90%; animation-delay: 2s; }
+        .star-6 { top: 55%; left: 10%; animation-delay: 2.5s; }
+        .star-7 { top: 65%; left: 70%; animation-delay: 0.3s; }
+        .star-8 { top: 75%; left: 40%; animation-delay: 0.8s; }
+        .star-9 { top: 85%; left: 85%; animation-delay: 1.3s; }
+        .star-10 { top: 20%; left: 50%; animation-delay: 1.8s; }
+        
+        @keyframes twinkle-star {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1);
+                box-shadow: 0 0 6px #fbbf24;
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5);
+                box-shadow: 0 0 12px #fbbf24, 0 0 20px #f59e0b;
+            }
+        }
+        
+        /* Floating Islands */
+        .floating-island {
+            position: absolute;
+            animation: float-island 6s ease-in-out infinite;
+        }
+        
+        .island-1 {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        
+        .island-2 {
+            top: 60%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+        
+        .island-3 {
+            top: 40%;
+            left: 70%;
+            animation-delay: 4s;
+        }
+        
+        .island-base {
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(135deg, #8b5a3c, #6b4423);
+            border-radius: 50px 50px 20px 20px;
+            position: relative;
+        }
+        
+        .island-tree {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            animation: sway 3s ease-in-out infinite;
+        }
+        
+        .island-glow {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 20px;
+            background: radial-gradient(ellipse, rgba(251, 191, 36, 0.3), transparent);
+            border-radius: 50%;
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes float-island {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            50% { transform: translateX(-50%) rotate(5deg); }
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Flying Creatures */
+        .flying-creature {
+            position: absolute;
+            font-size: 24px;
+            animation: fly-around 20s linear infinite;
+        }
+        
+        .creature-1 {
+            top: 30%;
+            left: -50px;
+            animation-delay: 0s;
+        }
+        
+        .creature-2 {
+            top: 50%;
+            left: -50px;
+            animation-delay: 5s;
+        }
+        
+        .creature-3 {
+            top: 25%;
+            left: -50px;
+            animation-delay: 10s;
+        }
+        
+        .creature-4 {
+            top: 70%;
+            left: -50px;
+            animation-delay: 15s;
+        }
+        
+        @keyframes fly-around {
+            0% { 
+                transform: translateX(0) translateY(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            25% {
+                transform: translateX(25vw) translateY(-20px) scale(1.1);
+            }
+            50% {
+                transform: translateX(50vw) translateY(10px) scale(0.9);
+            }
+            75% {
+                transform: translateX(75vw) translateY(-15px) scale(1.2);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateX(100vw) translateY(0) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Magical Particles */
+        .magic-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #fbbf24, #f59e0b);
+            border-radius: 50%;
+            animation: float-particle 8s ease-in-out infinite;
+        }
+        
+        .particle-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle-2 { top: 30%; left: 90%; animation-delay: 1s; }
+        .particle-3 { top: 50%; left: 20%; animation-delay: 2s; }
+        .particle-4 { top: 70%; left: 80%; animation-delay: 3s; }
+        .particle-5 { top: 40%; left: 60%; animation-delay: 4s; }
+        .particle-6 { top: 80%; left: 30%; animation-delay: 5s; }
+        .particle-7 { top: 15%; left: 70%; animation-delay: 6s; }
+        .particle-8 { top: 60%; left: 40%; animation-delay: 7s; }
+        
+        @keyframes float-particle {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+                box-shadow: 0 0 10px #fbbf24;
+            }
+            25% {
+                transform: translateY(-30px) scale(1.5);
+                opacity: 1;
+                box-shadow: 0 0 20px #fbbf24, 0 0 30px #f59e0b;
+            }
+            50% {
+                transform: translateY(-50px) scale(0.8);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(-20px) scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        /* Aurora Effect */
+        .aurora {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            opacity: 0.3;
+            animation: aurora-wave 12s ease-in-out infinite;
+        }
+        
+        .aurora-1 {
+            top: 10%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), rgba(168, 85, 247, 0.4), transparent);
+            animation-delay: 0s;
+        }
+        
+        .aurora-2 {
+            top: 20%;
+            background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.3), rgba(219, 39, 119, 0.3), transparent);
+            animation-delay: 4s;
+        }
+        
+        .aurora-3 {
+            top: 30%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.3), transparent);
+            animation-delay: 8s;
+        }
+        
+        @keyframes aurora-wave {
+            0%, 100% { 
+                transform: translateX(-100%) skewX(0deg);
+                opacity: 0;
+            }
+            25% {
+                transform: translateX(-50%) skewX(5deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(0%) skewX(-5deg);
+                opacity: 0.5;
+            }
+            75% {
+                transform: translateX(50%) skewX(3deg);
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 min-h-screen relative">
+    <!-- Floating magical elements -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-20 left-10 text-2xl animate-bounce" style="animation-delay: 0s;">✨</div>
+        <div class="absolute top-40 right-20 text-xl animate-bounce" style="animation-delay: 1s;">🌟</div>
+        <div class="absolute bottom-40 left-20 text-lg animate-bounce" style="animation-delay: 2s;">💫</div>
+        <div class="absolute bottom-20 right-10 text-2xl animate-bounce" style="animation-delay: 0.5s;">🧚‍♀️</div>
+        <div class="absolute top-60 left-1/2 text-sm animate-bounce" style="animation-delay: 1.5s;">⭐</div>
+    </div>
+    <!-- Enchanted Fairy Loader Overlay -->
+    <div id="loader" class="loader-overlay">
+        <div class="text-center">
+            <div class="fairy-loader">
+                <div class="fairy-wing"></div>
+                <div class="fairy-wing"></div>
+                <div class="fairy-wing"></div>
+                <div class="fairy-wing"></div>
+                <div class="fairy-head"></div>
+                <div class="fairy-body"></div>
+                <div class="magic-sparkles"></div>
+                <div class="magic-sparkles"></div>
+                <div class="magic-sparkles"></div>
+                <div class="magic-sparkles"></div>
+                <div class="magic-sparkles"></div>
+            </div>
+            <div class="loader-text">Casting Magic...</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full gradient-bg backdrop-blur-md z-50 shadow-lg highlight-glow highlight-shadow">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-gray-800 chrome-font highlight-text sparkle-overlay">HSC</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-purple-800 hover:text-amber-600 transition-all font-medium nav-text relative group highlight-nav">
+                        🏠 Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-purple-800 hover:text-amber-600 transition-all font-medium nav-text relative group highlight-nav">
+                        ✨ About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#skills" class="text-purple-800 hover:text-amber-600 transition-all font-medium nav-text relative group highlight-nav">
+                        🌟 Skills
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#projects" class="text-purple-800 hover:text-amber-600 transition-all font-medium nav-text relative group highlight-nav">
+                        🔮 Projects
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-purple-800 hover:text-amber-600 transition-all font-medium nav-text relative group highlight-nav">
+                        💫 Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 transition-all group-hover:w-full"></span>
+                    </a>
+                </div>
+                <button class="md:hidden text-gray-800 highlight-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Living Fantasy World -->
+    <section id="home" class="min-h-screen relative overflow-hidden flex items-center justify-center text-white">
+        <!-- Animated Fantasy Background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-900 via-purple-900 to-pink-900">
+            <!-- Moving Clouds -->
+            <div class="absolute inset-0">
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+                <div class="cloud cloud-4"></div>
+            </div>
+            
+            <!-- Twinkling Stars -->
+            <div class="absolute inset-0">
+                <div class="star star-1"></div>
+                <div class="star star-2"></div>
+                <div class="star star-3"></div>
+                <div class="star star-4"></div>
+                <div class="star star-5"></div>
+                <div class="star star-6"></div>
+                <div class="star star-7"></div>
+                <div class="star star-8"></div>
+                <div class="star star-9"></div>
+                <div class="star star-10"></div>
+            </div>
+            
+            <!-- Floating Islands -->
+            <div class="floating-island island-1">
+                <div class="island-base"></div>
+                <div class="island-tree">🌳</div>
+                <div class="island-glow"></div>
+            </div>
+            <div class="floating-island island-2">
+                <div class="island-base"></div>
+                <div class="island-tree">🏰</div>
+                <div class="island-glow"></div>
+            </div>
+            <div class="floating-island island-3">
+                <div class="island-base"></div>
+                <div class="island-tree">🌸</div>
+                <div class="island-glow"></div>
+            </div>
+            
+            <!-- Flying Creatures -->
+            <div class="flying-creature creature-1">🦋</div>
+            <div class="flying-creature creature-2">🧚‍♀️</div>
+            <div class="flying-creature creature-3">🕊️</div>
+            <div class="flying-creature creature-4">🦅</div>
+            
+            <!-- Magical Particles -->
+            <div class="magic-particle particle-1"></div>
+            <div class="magic-particle particle-2"></div>
+            <div class="magic-particle particle-3"></div>
+            <div class="magic-particle particle-4"></div>
+            <div class="magic-particle particle-5"></div>
+            <div class="magic-particle particle-6"></div>
+            <div class="magic-particle particle-7"></div>
+            <div class="magic-particle particle-8"></div>
+            
+            <!-- Aurora Effect -->
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+            <div class="aurora aurora-3"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center px-6">
+            <div class="floating">
+                <div class="relative w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-400/30 to-pink-400/30 backdrop-blur-md flex items-center justify-center pulse-glow overflow-hidden border-4 border-amber-300/50 shadow-2xl">
+                    <img id="profile-pic" class="w-full h-full object-cover rounded-full hidden" alt="Hannah Shien Cabague">
+                    <div id="default-avatar" class="w-20 h-20 bg-gradient-to-br from-amber-300 to-orange-400 rounded-full flex items-center justify-center text-4xl shadow-inner">
+                        🧙‍♀️
+                    </div>
+                    <input type="file" id="profile-upload" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center rounded-full">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                        </svg>
+                    </div>
+                    <!-- Magical Aura -->
+                    <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-purple-400/20 to-pink-400/20 animate-spin-slow"></div>
+                    <div class="absolute -inset-2 rounded-full bg-gradient-to-r from-amber-300/30 to-orange-400/30 animate-pulse"></div>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in chrome-font relative highlight-text highlight-glow sparkle-overlay">
+                Hannah Shien Cabague
+                <div class="absolute -top-4 -right-4 text-2xl animate-bounce">✨</div>
+                <div class="absolute -bottom-2 -left-4 text-xl animate-pulse">🌟</div>
+            </h1>
+            
+            <div class="text-xl md:text-3xl mb-8 fade-in fade-in-delay-1 nav-text relative highlight-border">
+                <span id="typing-text" class="typing-animation bg-gradient-to-r from-amber-200 to-orange-200 bg-clip-text text-transparent highlight-text">Enchanted Developer & Data Sorceress</span>
+                <div class="absolute -right-8 top-0 text-lg animate-bounce" style="animation-delay: 0.5s;">🔮</div>
+            </div>
+            
+            <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto opacity-90 fade-in fade-in-delay-2 leading-relaxed">
+                Weaving magical solutions through mystical code and transforming raw data into powerful enchantments that bring digital realms to life
+            </p>
+            
+            <div class="space-x-4 fade-in fade-in-delay-3">
+                <button onclick="scrollToSection('projects')" class="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white px-10 py-4 rounded-full font-semibold hover:from-purple-700 hover:via-indigo-700 hover:to-blue-700 transition-all transform hover:scale-105 nav-text shadow-2xl hover:shadow-purple-500/50 relative overflow-hidden group border-2 border-amber-300/30 highlight-button highlight-glow highlight-shadow">
+                    <span class="relative z-10">🔮 Explore My Spells</span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-30 group-hover:opacity-50 blur transition-opacity"></div>
+                </button>
+                <button onclick="scrollToSection('contact')" class="border-2 border-amber-300 text-amber-200 px-10 py-4 rounded-full font-semibold hover:bg-amber-300 hover:text-purple-900 transition-all transform hover:scale-105 nav-text shadow-2xl hover:shadow-amber-300/50 relative overflow-hidden group backdrop-blur-sm highlight-button highlight-border highlight-shadow">
+                    <span class="relative z-10">💫 Send a Message</span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-amber-300/10 to-orange-300/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </button>
+            </div>
+            
+            <!-- Magical Status Indicators -->
+            <div class="mt-12 flex justify-center space-x-8 fade-in fade-in-delay-3">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mb-2 mx-auto animate-pulse">
+                        ⚡
+                    </div>
+                    <p class="text-sm text-green-300">Power Level: MAX</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center mb-2 mx-auto animate-pulse" style="animation-delay: 0.5s;">
+                        🧠
+                    </div>
+                    <p class="text-sm text-blue-300">Wisdom: Legendary</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mb-2 mx-auto animate-pulse" style="animation-delay: 1s;">
+                        💎
+                    </div>
+                    <p class="text-sm text-purple-300">Magic: Infinite</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 gradient-bg highlight-glow">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 chrome-font highlight-text sparkle-overlay">About Me</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full highlight-border"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        I'm a passionate developer and analyst with 5+ years of experience building scalable applications and extracting meaningful insights from complex datasets.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        My expertise spans full-stack development, machine learning, and business intelligence. I love solving challenging problems and creating solutions that make a real impact.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">JavaScript</span>
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">Python</span>
+                        <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">React</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium">SQL</span>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="w-80 h-80 mx-auto bg-gradient-to-br from-purple-400 to-blue-500 rounded-2xl transform rotate-6 opacity-20"></div>
+                    <div class="absolute inset-0 w-80 h-80 mx-auto bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl flex items-center justify-center border border-white/30">
+                        <svg class="w-32 h-32 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 gradient-bg highlight-glow">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 chrome-font highlight-text sparkle-overlay">Skills & Expertise</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full highlight-border"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/30 backdrop-blur-md p-8 rounded-2xl shadow-lg card-hover border border-purple-200/50 relative overflow-hidden highlight-card highlight-shadow sparkle-overlay">
+                    <div class="absolute top-2 right-2 text-lg">✨</div>
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 text-3xl highlight-glow">
+                        🎨
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 nav-text text-purple-800 highlight-text">🌟 Frontend Development</h3>
+                    <div class="space-y-3">
+                        <div class="skill-item" data-skill="95">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">React/Vue.js</span>
+                                <span class="text-sm text-gray-500">95%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="90">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">JavaScript/TypeScript</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/30 backdrop-blur-md p-8 rounded-2xl shadow-lg card-hover border border-purple-200/50 relative overflow-hidden highlight-card highlight-shadow sparkle-overlay">
+                    <div class="absolute top-2 right-2 text-lg">🔮</div>
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 text-3xl highlight-glow">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 nav-text text-purple-800 highlight-text">🔮 Backend Development</h3>
+                    <div class="space-y-3">
+                        <div class="skill-item" data-skill="88">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Node.js/Python</span>
+                                <span class="text-sm text-gray-500">88%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-green-500 to-blue-500 h-2 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="85">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Database Design</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-green-500 to-blue-500 h-2 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/30 backdrop-blur-md p-8 rounded-2xl shadow-lg card-hover border border-purple-200/50 relative overflow-hidden highlight-card highlight-shadow sparkle-overlay">
+                    <div class="absolute top-2 right-2 text-lg">💫</div>
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 text-3xl highlight-glow">
+                        📊
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 nav-text text-purple-800 highlight-text">💫 Data Analysis</h3>
+                    <div class="space-y-3">
+                        <div class="skill-item" data-skill="92">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Python/R</span>
+                                <span class="text-sm text-gray-500">92%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-yellow-500 to-red-500 h-2 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="87">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Machine Learning</span>
+                                <span class="text-sm text-gray-500">87%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-gradient-to-r from-yellow-500 to-red-500 h-2 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 gradient-bg highlight-glow">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 chrome-font highlight-text sparkle-overlay">Featured Projects</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full highlight-border"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/20 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden card-hover border border-white/30 highlight-card highlight-shadow sparkle-overlay">
+                    <div class="h-48 gradient-bg flex items-center justify-center highlight-glow">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 nav-text highlight-text">E-Commerce Analytics Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Real-time analytics platform for tracking sales, customer behavior, and inventory management.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs">PostgreSQL</span>
+                        </div>
+                        <button class="text-purple-600 font-semibold hover:text-purple-800 transition-colors">View Project →</button>
+                    </div>
+                </div>
+
+                <div class="bg-white/20 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden card-hover border border-white/30 highlight-card highlight-shadow sparkle-overlay">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center highlight-glow">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 nav-text highlight-text">Predictive Maintenance System</h3>
+                        <p class="text-gray-600 mb-4">ML-powered system for predicting equipment failures and optimizing maintenance schedules.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs">TensorFlow</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs">Flask</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs">Docker</span>
+                        </div>
+                        <button class="text-purple-600 font-semibold hover:text-purple-800 transition-colors">View Project →</button>
+                    </div>
+                </div>
+
+                <div class="bg-white/20 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden card-hover border border-white/30 highlight-card highlight-shadow sparkle-overlay">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center highlight-glow">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 nav-text highlight-text">Social Media Sentiment Analyzer</h3>
+                        <p class="text-gray-600 mb-4">NLP application for analyzing brand sentiment across social media platforms in real-time.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">NLP</span>
+                            <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs">Vue.js</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs">MongoDB</span>
+                        </div>
+                        <button class="text-purple-600 font-semibold hover:text-purple-800 transition-colors">View Project →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg text-gray-800 highlight-glow">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4 chrome-font highlight-text sparkle-overlay">Let's Work Together</h2>
+            <div class="w-24 h-1 bg-gray-800 mx-auto rounded-full mb-8 highlight-border"></div>
+            <p class="text-xl mb-12 opacity-90 highlight-text">Ready to bring your ideas to life? Let's discuss your next project!</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center highlight-card sparkle-overlay">
+                    <div class="w-16 h-16 bg-gray-800/20 rounded-full flex items-center justify-center mx-auto mb-4 highlight-glow highlight-shadow">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 nav-text highlight-text">Email</h3>
+                    <p class="opacity-80">alex.chen@email.com</p>
+                </div>
+                
+                <div class="text-center highlight-card sparkle-overlay">
+                    <div class="w-16 h-16 bg-gray-800/20 rounded-full flex items-center justify-center mx-auto mb-4 highlight-glow highlight-shadow">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 highlight-text">Phone</h3>
+                    <p class="opacity-80">+1 (555) 123-4567</p>
+                </div>
+                
+                <div class="text-center highlight-card sparkle-overlay">
+                    <div class="w-16 h-16 bg-gray-800/20 rounded-full flex items-center justify-center mx-auto mb-4 highlight-glow highlight-shadow">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 highlight-text">Location</h3>
+                    <p class="opacity-80">San Francisco, CA</p>
+                </div>
+            </div>
+            
+            <div class="flex justify-center space-x-6">
+                <button class="w-12 h-12 bg-gray-800/20 rounded-full flex items-center justify-center hover:bg-gray-800/30 transition-all transform hover:scale-110 highlight-button highlight-glow highlight-shadow">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </button>
+                <button class="w-12 h-12 bg-gray-800/20 rounded-full flex items-center justify-center hover:bg-gray-800/30 transition-all transform hover:scale-110 highlight-button highlight-glow highlight-shadow">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </button>
+                <button class="w-12 h-12 bg-gray-800/20 rounded-full flex items-center justify-center hover:bg-gray-800/30 transition-all transform hover:scale-110 highlight-button highlight-glow highlight-shadow">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Loader functions
+        function showLoader() {
+            const loader = document.getElementById('loader');
+            loader.classList.add('active');
+        }
+        
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            loader.classList.remove('active');
+        }
+
+        // Smooth scrolling with loader
+        function scrollToSection(sectionId) {
+            showLoader();
+            setTimeout(() => {
+                document.getElementById(sectionId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                setTimeout(hideLoader, 800);
+            }, 300);
+        }
+
+        // Navigation links with loader
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                showLoader();
+                setTimeout(() => {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    setTimeout(hideLoader, 800);
+                }, 300);
+            });
+        });
+
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const skillBar = item.querySelector('.skill-bar');
+                    const skillLevel = item.getAttribute('data-skill');
+                    skillBar.style.width = skillLevel + '%';
+                }
+            });
+        }
+
+        // Typing animation
+        function typeWriter() {
+            const text = "Enchanted Developer & Data Sorceress";
+            const element = document.getElementById('typing-text');
+            let i = 0;
+            
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize animations
+        window.addEventListener('scroll', animateSkillBars);
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 1000);
+            animateSkillBars();
+        });
+
+        // Profile picture upload
+        document.getElementById('profile-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profilePic = document.getElementById('profile-pic');
+                    const defaultAvatar = document.getElementById('default-avatar');
+                    
+                    profilePic.src = e.target.result;
+                    profilePic.classList.remove('hidden');
+                    defaultAvatar.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-gray-600');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-gray-600');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fe65e73625b9fb',t:'MTc1ODAwNTA5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
